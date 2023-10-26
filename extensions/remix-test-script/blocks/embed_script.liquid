@@ -1,0 +1,36 @@
+{% assign sledge_api_key = block.settings.api_key %}
+{% assign sledge_instant_search_api_key = block.settings.instant_search_key %}
+{% assign user_id = "" %}
+{% assign user_email = "" %}
+{% assign user_fullname = "" %}
+{% if customer %}
+  {% assign user_id = customer.id %}
+  {% assign user_email = customer.email %}
+  {% assign user_fullname = customer.name %}
+  {% if customer.name == null or customer.name == "" %}{% assign user_fullname = customer.email | split: "@" | first %}{% endif %}
+{% endif %}
+ 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sledge-app/js@latest/dist/style.css" />
+ 
+<script
+    type="module"
+    data-api-key="{{ sledge_api_key }}"
+    data-instant-search-api-key="{{ sledge_instant_search_api_key }}"
+    data-user-id="{{ user_id }}"
+    data-user-email="{{ user_email }}"
+    data-user-fullname="{{ user_fullname }}"
+    id="sledge-embed-script"
+    src="https://cdn.jsdelivr.net/npm/@sledge-app/js@latest/dist/sledge.min.js"
+></script>
+
+{% schema %}
+  {
+    "name": "Sledge Embed Script",
+    "target": "head",
+    "settings": [
+        { "type": "text", "id": "api_key", "label": "API Key" },
+        { "type": "text", "id": "instant_search_key", "label": "Instant Search Key" },
+        { "type": "liquid", "id": "custom_component_product_card", "label": "Custom product card" }
+    ]
+  }
+{% endschema %}

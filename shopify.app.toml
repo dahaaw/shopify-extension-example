@@ -1,0 +1,28 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+name = "RemixTest"
+client_id = "482d67306a8edfa5f0369d039109b11e"
+application_url = "https://chase-scientific-supreme-page.trycloudflare.com"
+embedded = true
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "write_products"
+
+[auth]
+redirect_urls = [
+  "https://chase-scientific-supreme-page.trycloudflare.com/auth/callback",
+  "https://chase-scientific-supreme-page.trycloudflare.com/auth/shopify/callback",
+  "https://chase-scientific-supreme-page.trycloudflare.com/api/auth/callback",
+  "https://chase-scientific-supreme-page.trycloudflare.com/.shopify/graphiql/auth/callback"
+]
+
+[webhooks]
+api_version = "2023-10"
+
+[pos]
+embedded = false
+
+[build]
+automatically_update_urls_on_dev = true
+dev_store_url = "products-development.myshopify.com"
